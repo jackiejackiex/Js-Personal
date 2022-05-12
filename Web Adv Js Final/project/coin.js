@@ -5,6 +5,7 @@ const currencyTag = document.querySelector("span#currency")
 const historyTag = document.querySelector("span#price")
 const bodyTag = document.querySelector("body")
 const navLinks = document.querySelectorAll("nav a")
+const whatIf = document.querySelector("div a")
 const urls = [url, url30D]
 let exchange = {USD: 1, GBP: 0.8, EUR: 0.9}
 
@@ -98,7 +99,7 @@ const historyPrice = () => {
             exchangeRate()
             usdP = data.bpi[yesterday].toFixed(1)
             historyTag.innerHTML = (usdP * exchange[currency]).toFixed(1)
-            console.log(exchange)
+            // console.log(exchange)
         })
 }
 
@@ -115,11 +116,11 @@ const comparePrice = () => {
         newP = data[0].bpi[currency].rate_float.toFixed(1)
         if ((newP - oldP) < 0)
         {
-            bodyTag.style.color = "#CDF360"
-            bodyTag.style.backgroundImage = "linear-gradient(180deg,#000000 50%, #CDF360 150%)"
+            bodyTag.style.color = 'var(--main-color)'
+            bodyTag.style.backgroundImage = "url('/assets/grid.svg'), linear-gradient(180deg,rgba(205,243,96,0) 50%, rgba(205,243,96,1) 150%)"
         } else {
-            bodyTag.style.color = "#EC6587"
-            bodyTag.style.backgroundImage = "linear-gradient(180deg,#000000 50%, #EC6587 150%)"
+            bodyTag.style.color = 'var(--text-color)'
+            bodyTag.style.backgroundImage = "url('/assets/grid.svg'),  linear-gradient(180deg,rgba((236,101,135,0) 50%, rgba(236,101,135,1) 150%)"
         }
     })
 
@@ -127,4 +128,26 @@ const comparePrice = () => {
 
 comparePrice()
 
+//what if
+const changeColor = () => {
+    whatIf.addEventListener("click", () => {
+        if ((priceTag.innerHTML - historyTag.innerHTML) < 0){
+            bodyTag.style.color = 'var(--hover-color)'
+            bodyTag.style.backgroundImage = "url('/assets/grid.svg'), linear-gradient(180deg, rgba(236,101,135,0) 50%, rgba(236,101,135,1) 150%)"
+            setTimeout(() => {
+                bodyTag.style.color = "var(--main-color)"
+                bodyTag.style.backgroundImage = "url('/assets/grid.svg'), linear-gradient(180deg, rgba(205,243,96,0) 50%, rgba(205,243,96,1) 150%)"
+            }, 10000)
+        }else{
+            bodyTag.style.color = "var(--main-color)"
+            bodyTag.style.backgroundImage = "url('/assets/grid.svg'), linear-gradient(180deg, rgba(205,243,96,0) 50%, rgba(205,243,96,1) 150%)"
+            setTimeout(() => {
+                bodyTag.style.color = "var(--hover-color)"
+                bodyTag.style.backgroundImage = "url('/assets/grid.svg'), linear-gradient(180deg, rgba(236,101,135,0) 50%, rgba(236,101,135,1) 150%)"
+            }, 10000)
+        };   
+        console.log((priceTag.innerHTML))
+    })
+}
 
+changeColor()

@@ -1,13 +1,26 @@
 @import url('https://fonts.googleapis.com/css?family=Space+Mono:400,700');
 
+:root{
+    --bg-color-1: rgb(0, 0, 0, 1);
+    --text-color: rgb(255, 255, 255, 1);
+    --main-color: rgb(205, 243, 96, 1);
+    --hover-color: rgb(236, 101, 135, 1);
+}
+
+body.light-mode{
+    --bg-color-1: rgb(255, 255, 255, 1);
+    --text-color: rgb(0, 0, 0, 1);
+    --main-color: rgb(102, 139, 0, 1);
+    --hover-color: rgb(126, 10, 39, 1);
+}
+
 body{
     font-family: "Space Mono";
     font-size: 16px;
     line-height: 1.5;
 
-    background-color: #000000;
-    color: #ffffff;
-}
+    background-color: var(--bg-color-1);
+    color: var(--text-color); }
 
 h1{
     font-size: 20vmin;
@@ -30,12 +43,60 @@ nav {
     right: 30px;
 }
 
-nav a{
-    color: #999999;
+a {
     text-decoration: none;
 }
 
-nav a.selected{
-    color: #ffffff;
+a:hover{
+    color: var(--hover-color);
+}
 
+nav a{
+    color: #999999;
+}
+
+nav a.selected{
+    color: var(--text-color);
+
+}
+
+div a{
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    color: #EC6587;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 24px;
+}
+
+.dark-mode-toggle{
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    color: var(--text-color);
+}
+
+/* svg{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+svg.spin{
+    border: 1px solid var(--main-color);
+}
+
+svg.spin rect{
+    stroke: var(--main-color);
+} */
+
+img{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
 }
