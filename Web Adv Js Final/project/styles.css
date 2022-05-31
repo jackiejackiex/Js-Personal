@@ -100,3 +100,13 @@ img{
     transform: translate(-50%, -50%);
     z-index: -1;
 }
+
+@media (prefers-color-scheme: dark) {
+    background-color: #000000;
+    color: #ffffff;
+    
+    /* --bg-color-1: rgb(0, 0, 0, 1);
+    --text-color: rgb(255, 255, 255, 1);
+    --main-color: rgb(205, 243, 96, 1);
+    --hover-color: rgb(236, 101, 135, 1; */
+  }
